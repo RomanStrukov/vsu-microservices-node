@@ -4,7 +4,8 @@
   "description": "Microservice to track down flats",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "start": "node src/index.js"
   },
   "author": "Evgeniy Morozov",
   "license": "Apache-2.0",

@@ -3,7 +3,7 @@
 const {EventEmitter} = require('events')
 const server = require('./server/server')
 const repository = require('./repository/repository')
-const config = require('./config/')
+const config = require('./config')
 const mediator = new EventEmitter()
 
 // verbose logging when we are starting the server

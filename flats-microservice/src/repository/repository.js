@@ -1,6 +1,7 @@
 'use strict'
 
 const repository = (db) => {
+  console.log(db.collection)
   const collection = db.collection('flats')
 
   const getAllFlats = () => {
