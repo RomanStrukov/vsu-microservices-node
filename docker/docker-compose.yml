@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo-database:
+    hostname: mongodb-server
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+    networks:
+      - vsu-microservices
+
+  flats-microservice:
+    build: "../flats-microservice/."
+    hostname: "flats-server"
+    environment:
+      - DB_SERVERS=mongodb-server:27017
+    networks:
+      - vsu-microservices
+    ports:
+      - "3000:3000"
+
+networks:
+  vsu-microservices:
+    driver: bridge
