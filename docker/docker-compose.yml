@@ -22,6 +22,19 @@ services:
     ports:
       - "3000:3000"
 
+  auth-microservice:
+    build: "../auth-microservice/."
+    hostname: "auth-server"
+    container_name: "auth-server"
+    environment:
+      - DB_SERVERS=mongodb-server:27017
+    networks:
+      - vsu-microservices
+    depends_on:
+      - "mongo-database"
+    ports:
+      - "3001:3000"
+
 networks:
   vsu-microservices:
     driver: bridge
