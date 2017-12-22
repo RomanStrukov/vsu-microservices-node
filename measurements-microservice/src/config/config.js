@@ -25,7 +25,7 @@ const dbSettings = {
 
 // server parameters
 const serverSettings = {
-  port: process.env.PORT || 3030
+  port: process.env.PORT || 3000
 }
 
 module.exports = Object.assign({}, { dbSettings, serverSettings })
