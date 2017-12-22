@@ -35,6 +35,19 @@ services:
     ports:
       - "3001:3000"
 
+  measurements-microservice:
+    build: "../measurements-microservice/."
+    hostname: "measurements-microservice"
+    container_name: "measurements-microservice"
+    environment:
+      - DB_SERVERS=mongodb-server:27017
+    networks:
+      - vsu-microservices
+    depends_on:
+      - "mongo-database"
+    ports:
+      - "3002:3000"
+
 networks:
   vsu-microservices:
     driver: bridge
