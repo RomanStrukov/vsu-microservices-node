@@ -48,6 +48,19 @@ services:
     ports:
       - "3002:3000"
 
+  receipts-microservice:
+    build: "../receipts-microservice/."
+    hostname: "receipts-microservice"
+    container_name: "receipts-microservice"
+    environment:
+      - DB_SERVERS=mongodb-server:27017
+    networks:
+      - vsu-microservices
+    depends_on:
+      - "mongo-database"
+    ports:
+      - "3003:3000"
+
 networks:
   vsu-microservices:
     driver: bridge
