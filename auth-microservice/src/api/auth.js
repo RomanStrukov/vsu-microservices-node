@@ -11,7 +11,7 @@ module.exports = (app, options) => {
   })
 
   // Get user by ID
-  app.get('/auth/users:email', (req, res, next) => {
+  app.get('/auth/users/:email', (req, res, next) => {
     if (req.params.id == null) {
       res.status(status.NO_CONTENT).json({ 'response': 'expected parameter \'id\'' })
       return

@@ -35,7 +35,7 @@ const repository = (db) => {
 
       const sendUsers = (err) => {
         if (err) {
-          reject(new Error(`An error occured fetching all users, err:' + err)`))
+          reject(new Error(`An error occured fetching all users, err: ${err})`))
         }
         resolve(users.slice())
       }
