@@ -1,52 +1,52 @@
 ﻿var housingApp = angular.module("housingApp", []);
 housingApp.controller("billsControl", function($scope) {
 $scope.bills = [
-                    { 'name':'Infosys Technologies',
-                    	'employees': 125000,
-                    	'headoffice': 'Bangalore'},
-                    	{ 'name':'Cognizant Technologies',
-	                    	'employees': 100000,
-	                    	'headoffice': 'Bangalore'},
-	                    	{ 'name':'Wipro',
-		                    	'employees': 115000,
-		                    	'headoffice': 'Bangalore'},
-		                    	{ 'name':'Tata Consultancy Services (TCS)',
-			                    	'employees': 150000,
-			                    	'headoffice': 'Bangalore'},
-			                    	{ 'name':'HCL Technologies',
-				                    	'employees': 90000,
-				                    	'headoffice': 'Noida'},
+                    { 'type':'Water',
+                    	'value': 1250,
+                    	'date': 'Bangalore'},
+                    	{ 'type':'Gas',
+	                    	'value': 1000,
+	                    	'date': 'Bangalore'},
+	                    	{ 'type':'Electricity',
+		                    	'value': 1150,
+		                    	'date': 'Bangalore'},
+		                    	{ 'type':'Phone',
+			                    	'value': 1500,
+			                    	'date': 'Bangalore'},
+			                    	{ 'type':'Internet',
+				                    	'value': 900,
+				                    	'date': 'Noida'},
                     ];
 $scope.addRow = function(){		
-	$scope.bills.push({ 'name':$scope.name, 'employees': $scope.employees, 'headoffice':$scope.headoffice });
-	$scope.name='';
-	$scope.employees='';
-	$scope.headoffice='';
+	$scope.bills.push({ 'type':$scope.type, 'value': $scope.value, 'Date':$scope.date });
+	$scope.type='';
+	$scope.value='';
+	$scope.date='';
 };
 
-$scope.removeRow = function(name){				
+$scope.removeRow = function(type){				
 		var index = -1;		
 		var comArr = eval( $scope.bills );
 		for( var i = 0; i < comArr.length; i++ ) {
-			if( comArr[i].name === name ) {
+			if( comArr[i].type === type ) {
 				index = i;
 				break;
 			}
 		}
 		if( index === -1 ) {
-			alert( "Something gone wrong" );
+			alert( "Something went wrong" );
 		}
 		$scope.bills.splice( index, 1 );		
 	};
 });
-
+//FINISH OFF
 housingApp.controller("HttpController", [ '$scope', '$http',
 	function($scope, $http) {
 		$http({
 			method : 'GET',
-			url : '/getAllProfiles'
+			url : '/measurements/:userId'
 		}).success(function(data, status, headers, config) {
-			$scope.profiles = data;
+			$scope.bills = data;
 		}).error(function(data, status, headers, config) {
 			alert( "failure");
 		});
